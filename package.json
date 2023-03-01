@@ -1,5 +1,5 @@
 {
-    "name": "espree-logging-solution",
+    "name": "espree-logging",
     "author": "Sergio de la Barrea García <alu0100953275@ull.edu.es> ",
     "description": "Adds logs to javascript code",
     "type": "module",
@@ -18,8 +18,9 @@
         "estraverse": "^5.2.0",
         "underscore": "^1.12.0"
     },
-    "version": "0.3.0",
+    "version": "0.9.0",
     "devDependencies": {
-        "mocha": "^10.2.0"
+        "mocha": "^10.2.0",
+        "nyc": "^15.1.0"
     }
 }
