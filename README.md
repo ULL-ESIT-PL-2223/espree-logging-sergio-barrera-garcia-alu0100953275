@@ -310,33 +310,39 @@ De la misma forma creamos un script *cov* para que haga el coverage en la carpet
 - Script:
   
 ```json
-"cov": "npx nyc --reporter=html --reporter=text --report-dir docs/coverage mocha",
+"cov": "c8 npm test",
+"cov2": "c8 npm test -- --reporter=html --reporter=text --reports-dir docs/coverage",
 ```
 
 - Esta sería la salida al ejecutarlo: 
 
 ```bash
-$ npm run cov
+  $ npm run cov
 
-> @alu0100953275/espree-logging@0.9.1 cov
-> npx nyc --reporter=html --reporter=text --report-dir docs/coverage mocha
+  > @alu0100953275/espree-logging@1.0.0 cov
+  > c8 npm test
+
+
+  > @alu0100953275/espree-logging@1.0.0 test
+  > mocha test/test.mjs
 
 
 
-  ✔ transpile(test1.js, logged1.js)
-  ✔ transpile(test2.js, logged2.js)
-  ✔ transpile(test3.js, logged3.js)
-  ✔ transpile(test4.js, logged4.js)
-  ✔ transpile(test5.js, logged5.js)
-  ✔ transpile(test6.js, logged6.js)
+    ✔ transpile(test1.js, logged1.js) (38ms)
+    ✔ transpile(test2.js, logged2.js)
+    ✔ transpile(test3.js, logged3.js)
+    ✔ transpile(test4.js, logged4.js)
+    ✔ transpile(test5.js, logged5.js)
+    ✔ transpile(test6.js, logged6.js)
 
-  6 passing (64ms)
+    6 passing (82ms)
 
-----------|---------|----------|---------|---------|-------------------
-File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------|---------|----------|---------|---------|-------------------
-All files |       0 |        0 |       0 |       0 |                   
-----------|---------|----------|---------|---------|-------------------
+  -------------------|---------|----------|---------|---------|-------------------
+  File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+  -------------------|---------|----------|---------|---------|-------------------
+  All files          |   86.11 |      100 |     100 |   86.11 |                   
+  logging-espree.js |   86.11 |      100 |     100 |   86.11 | 16-20,25-29       
+  -------------------|---------|----------|---------|---------|-------------------
 ```
 
 ## Integración continua
