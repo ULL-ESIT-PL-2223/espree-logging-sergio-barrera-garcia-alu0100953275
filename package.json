@@ -11,17 +11,27 @@
         "test2": "bin/log.js test/data/test2.js",
         "test3": "bin/log.js test/data/test3.js",
         "test": "mocha test/test.mjs",
-        "cov": "npx nyc --reporter=html --reporter=text --report-dir docs/coverage mocha"
+        "cov": "npx nyc --reporter=html --reporter=text --report-dir docs/coverage mocha",
+        "doc": "documentation build ./src/** -f html -o docs"
     },
     "dependencies": {
+        "@alu0100953275/espree-logging": "^0.9.1",
         "acorn": "^8.8.2",
         "commander": "^10.0.0",
         "escodegen": "^2.0.0",
         "espree": "^9.4.1",
         "estraverse": "^5.2.0",
+        "jsdoc": "^4.0.2",
+        "jsdoc-to-markdown": "^8.0.0",
         "underscore": "^1.12.0"
     },
-    "version": "0.9.0",
+    "keywords": [
+        "ull",
+        "jison",
+        "espree",
+        "compiler"
+      ],
+    "version": "0.9.1",
     "devDependencies": {
         "mocha": "^10.2.0",
         "nyc": "^15.1.0"
