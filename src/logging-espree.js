@@ -11,19 +11,21 @@ import * as fs from "fs/promises";
  * @example
  * transpile('test1.js', 'logged1.js')
 */
-export async function transpile(inputFile, outputFile) {
+export async function transpile(inputFile, outputFile = "salida.js") {
   let input = await fs.readFile(inputFile, 'utf-8', (err) => {
     if (err) {
       console.log(err);
+    } else {
+      console.log("File read successfully\n");
     }
   });
   const afterAdd = addLogging(input);
 
   await fs.writeFile(outputFile, afterAdd, (err) => {
-    if (err)
+    if (err) {
       console.log(err);
-    else {
-      console.log("File written successfully\n");
+    } else {
+      console.log(`File written successfully in ${outputFile} \n`);
     }
   });
 }

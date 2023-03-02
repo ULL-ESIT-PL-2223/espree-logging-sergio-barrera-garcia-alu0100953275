@@ -15,7 +15,7 @@
         "doc": "documentation build ./src/** -f html -o docs"
     },
     "dependencies": {
-        "@alu0100953275/espree-logging": "^0.9.1",
+        "@alu0100953275/espree-logging": "*",
         "acorn": "^8.8.2",
         "commander": "^10.0.0",
         "escodegen": "^2.0.0",
@@ -31,7 +31,7 @@
         "espree",
         "compiler"
       ],
-    "version": "0.9.1",
+    "version": "1.0.0",
     "devDependencies": {
         "mocha": "^10.2.0",
         "nyc": "^15.1.0"
