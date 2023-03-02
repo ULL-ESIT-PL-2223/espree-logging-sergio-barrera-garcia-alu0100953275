@@ -7,12 +7,12 @@ const { version, description } = require("../package.json");
 import { transpile } from "../src/logging-espree.js";
 
 program
-  .name("jslogging")
+  .name("logging-espree")
   .version(version)
   .description(description)
   .usage('[options] <filename> [...]')
   .argument("[filename]", 'file with the original code')
-  .option("-o, --output <filename>", "file in which to write the output", "output.js")
+  .option("-o, --output <filename>", "file in which to write the output", "salida.js")
   .action((filename, options) => {
     if (filename) {
       transpile(filename, options.output);

@@ -1,0 +1,2 @@
+Entering <anonymous function>(3, 4) at line 1
+12

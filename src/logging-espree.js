@@ -3,6 +3,14 @@ import * as espree from "espree";
 import * as estraverse from "estraverse";
 import * as fs from "fs/promises";
 
+/**
+ * @description Transpiles the code in inputFile and writes the result in outputFile
+ * @param {string} inputFile - The file with the original code
+ * @param {string} outputFile - The file in which to write the output
+ * @returns {Promise<void>} A promise that resolves when the file is written
+ * @example
+ * transpile('test1.js', 'logged1.js')
+*/
 export async function transpile(inputFile, outputFile) {
   let input = await fs.readFile(inputFile, 'utf-8', (err) => {
     if (err) {
@@ -11,16 +19,23 @@ export async function transpile(inputFile, outputFile) {
   });
   const afterAdd = addLogging(input);
 
-  fs.writeFile(outputFile, afterAdd, (err) => {
+  await fs.writeFile(outputFile, afterAdd, (err) => {
     if (err)
       console.log(err);
     else {
       console.log("File written successfully\n");
-      console.log("The written has the following contents:");
     }
   });
 }
 
+/**
+ * @description Adds logging to the code
+ * @param {string} code - The code to add logging to
+ * @returns {string} The code with logging added
+ * @example
+ * addLogging('function f(x) { return x + 1; }')
+ *  returns 'function f(x) { console.log(`Entering f(${x}) at line 1`); return x + 1; }'
+*/
 export function addLogging(code) {
   const ast = espree.parse(code, {ecmaVersion:12, loc:true});
   estraverse.traverse(ast, {
@@ -36,6 +51,13 @@ export function addLogging(code) {
   return escodegen.generate(ast);
 }
 
+/**
+ * @description Adds logging to the code
+ * @param {string} node - The node to add logging to
+ * @example
+ * addBeforeCode('function f(x) { return x + 1; }')
+ * returns 'function f(x) { console.log(`Entering f(${x}) at line 1`); return x + 1; }'
+*/
 function addBeforeCode(node) {
   const name = node.id ? node.id.name : '<anonymous function>';
   let arrayNames = []

@@ -1,5 +1,5 @@
 {
-    "name": "espree-logging",
+    "name": "@alu0100953275/espree-logging",
     "author": "Sergio de la Barrea García <alu0100953275@ull.edu.es> ",
     "description": "Adds logs to javascript code",
     "type": "module",
@@ -7,8 +7,11 @@
         "funlog": "bin/log.js"
     },
     "scripts": {
+        "test1": "bin/log.js test/data/test1.js",
+        "test2": "bin/log.js test/data/test2.js",
+        "test3": "bin/log.js test/data/test3.js",
         "test": "mocha test/test.mjs",
-        "cov": "npx nyc --reporter=html --reporter=text --report-dir docs mocha"
+        "cov": "npx nyc --reporter=html --reporter=text --report-dir docs/coverage mocha"
     },
     "dependencies": {
         "acorn": "^8.8.2",
