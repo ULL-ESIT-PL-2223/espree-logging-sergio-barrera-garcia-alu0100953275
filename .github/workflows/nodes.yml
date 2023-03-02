@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node-version: [ 14.x, 16.x, 18.x, 19.x ]
+        node-version: [ 18.x]
         architecture: [ x64 ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
