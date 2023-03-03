@@ -39,7 +39,7 @@ export async function transpile(inputFile, outputFile = "salida.js") {
  *  returns 'function f(x) { console.log(`Entering f(${x}) at line 1`); return x + 1; }'
 */
 export function addLogging(code) {
-  const ast = espree.parse(code, {ecmaVersion:12, loc:true});
+  const ast = espree.parse(code, {ecmaVersion:6, loc:true});
   estraverse.traverse(ast, {
       enter: function(node, parent) {
           if (node.type === 'FunctionDeclaration' ||
@@ -67,6 +67,6 @@ function addBeforeCode(node) {
     arrayNames.push('${ ' + (node.params[iterator].name) + " }")
   }
   var beforeCode = "console.log(`Entering " + name + "(" + arrayNames.toString() +  ") at line " + node.loc.start.line + "`);";
-  var beforeNodes = espree.parse(beforeCode, {ecmaVersion:12}).body;
+  var beforeNodes = espree.parse(beforeCode, {ecmaVersion:6}).body;
   node.body.body = beforeNodes.concat(node.body.body);
 }

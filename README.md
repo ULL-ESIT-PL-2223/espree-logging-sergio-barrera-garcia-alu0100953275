@@ -86,7 +86,7 @@ export async function transpile(inputFile, outputFile) {
           arrayNames.push('${ ' + (node.params[iterator].name) + " }")
         }
         var beforeCode = "console.log(`Entering " + name + "(" + arrayNames.toString() +  ") at line " + node.loc.start.line + "`);";
-        var beforeNodes = espree.parse(beforeCode, {ecmaVersion:12}).body;
+        var beforeNodes = espree.parse(beforeCode, {ecmaVersion:6}).body;
         node.body.body = beforeNodes.concat(node.body.body);
       }
     ```
@@ -216,7 +216,7 @@ Una vez sabemos esto simplemente tenemos que añadirlo a la condición de la fun
 
 ```js
 export function addLogging(code) {
-  const ast = espree.parse(code, {ecmaVersion:12, loc:true});
+  const ast = espree.parse(code, {ecmaVersion:6, loc:true});
   estraverse.traverse(ast, {
       enter: function(node, parent) {
           if (node.type === 'FunctionDeclaration' ||
@@ -237,7 +237,7 @@ Para que nos salgan el número de línea en el log de la función es necesario a
 
 ```js
 export function addLogging(code) {
-  const ast = espree.parse(code, {ecmaVersion:12, loc:true});
+  const ast = espree.parse(code, {ecmaVersion:6, loc:true});
   estraverse.traverse(ast, {
       enter: function(node, parent) {
           if (node.type === 'FunctionDeclaration' ||
